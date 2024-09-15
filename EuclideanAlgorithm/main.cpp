@@ -1,15 +1,30 @@
 #include <iostream>
 using namespace std;
 
-int gcd(unsigned int, unsigned int);
+int gcd1(unsigned int, unsigned int);
+int gcd2(unsigned int, unsigned int);
 
 int main() {
-	cout << gcd(12, 12);
+	cout << gcd2(48, 36);
 
 	return 0;
 }
 
-int gcd(unsigned int a, unsigned int b) {
+int gcd2(unsigned int a, unsigned int b) {
+	while (a && b) {
+		if (a > b) {
+			a %= b;
+		}
+		else {
+			b %= a;
+		}
+	}
+
+	return a + b;
+}
+
+
+int gcd1(unsigned int a, unsigned int b) {
 	while (a && b) {
 		if (a > b) {
 			a -= b;
@@ -19,5 +34,5 @@ int gcd(unsigned int a, unsigned int b) {
 		}
 	}
 
-	return a > b ? a : b;
+	return a;
 }
